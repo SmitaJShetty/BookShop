@@ -1,1 +1,4 @@
 node_modules
+client/graphql-client/node_modules
+server/node_modules
+.gitignore
