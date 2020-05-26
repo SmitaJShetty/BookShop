@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&family=Sacramento&display=swap');
+
+.container {
+    display: flex;
+    flex-direction: row;
+    columns: 2;
+    font-family: "Sacramento" ,"BalooChettan2", Impact, Haettgitpuenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: medium;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.774);
+}
+
+.navbar-container{
+    display: flex;
+    align-self: left;
+    align-items: left;
+    text-align: center;
+    width: 20%;
+    background-color: lightyellow;
+    font-weight: 800;
+    font-size: 20px;
+    font-family: "Sacramento" ,"BalooChettan2", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.navbar-item{
+    padding: 10px 0 10px 0;
+}
+
+.navbar-item li a:hover {
+    transition: all 0.3s ease 0s;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-self: left;
+    width: 80%;
+    background-color: rgb(236, 230, 211);
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    align-self: center;
+    font-size: xx-large;
+    font-family: "Sacramento" ,"BalooChettan2", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.search {
+    align-self: center;
+    align-content: right;
+}
+
+.booklist {
+    align-content: center;
+    align-content: flex-start;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.cardcontent {
+    font-size: 20px;
+    background-color: rgb(236, 230, 211);
+}
