@@ -13,7 +13,7 @@ const BookType = new GraphQLObjectType(
             author: {
                 type: AuthorType,
                 resolve(parent, args){
-                    return models.book.findById(parent.authorId)
+                    return models.author.findById(parent.authorId); 
                 }
             }
         }),
@@ -34,7 +34,6 @@ const AuthorType = new GraphQLObjectType(
                 }
             }
         })
-
     }
 )
 
@@ -101,7 +100,13 @@ const Query = new GraphQLObjectType({
             resolve(parent, args){
                 return models.book.find({});
             }
-        }
+        },
+        authors: {
+            type: new GraphQLList(AuthorType), 
+            resolve(parent, args){
+                return models.author.find({})
+            }
+        },
     }
 });
 
@@ -116,12 +121,12 @@ const Mutation = new GraphQLObjectType({
                 authorId: {type: new GraphQLNonNull(GraphQLString)}
             },
             resolve(parent, args){
-                console.log('args:', args);
                 let newBook = new models.book({
                     name: args.name,
                     genre: args.genre,
-                    authorId: args.AuthorId,
+                    authorId: args.authorId,
                 });
+                newBook.id=newBook._id;
                 return newBook.save();
             }
         },
@@ -136,6 +141,7 @@ const Mutation = new GraphQLObjectType({
                     name: args.name,
                     age: args.age,
                 });
+                newAuthor.id=newAuthor._id;
                 return newAuthor.save();
             }
         },
@@ -145,10 +151,11 @@ const Mutation = new GraphQLObjectType({
                 bookId: {type:GraphQLID},
             },
             resolve(parent, args){
-                let addRecommendation = new models.recommendation({
+                let newRecommendation = new models.recommendation({
                     bookId: args.bookId,
                 });
-                return addRecommendation.save();
+                newRecommendation.id=newRecommendation._id;
+                return newRecommendation.save();
             }
         }
     }
