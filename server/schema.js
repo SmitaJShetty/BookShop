@@ -127,6 +127,7 @@ const Mutation = new GraphQLObjectType({
                     authorId: args.authorId,
                 });
                 newBook.id=newBook._id;
+                addNotification();
                 return newBook.save();
             }
         },
@@ -161,7 +162,12 @@ const Mutation = new GraphQLObjectType({
     }
 });
 
+const Subscription = {
+    bookAdded(bookName, AuthorName)
+}
+
 module.exports= new GraphQLSchema({
     query: Query,
-    mutation: Mutation
+    mutation: Mutation,
+    subscription: Subscription
 });

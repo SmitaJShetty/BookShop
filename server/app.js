@@ -1,3 +1,6 @@
+import {SubscriptionServer} from 'subscriptions-transport-ws';
+import { createServer } from 'http';
+
 const express = require('express');
 const schema = require('./schema.js');
 const graphQLHttp = require('express-graphql');
@@ -17,6 +20,17 @@ app.use('/graphql', graphQLHttp({
     graphiql:true,
 }));
 
-app.listen(4000, ()=>{
+let ws =createServer(app);
+ws.listen(4000, ()=>{
     console.log('listening on requests on port 4000');
+    new SubscriptionServer({
+        execute, 
+        subscribe, 
+        schema
+    }, {
+        server: ws,
+        path: '/subscriptions'
+    });
 })
+
+
