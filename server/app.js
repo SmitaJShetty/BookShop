@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(cors());
 
-mongoose.connect("mongodb+srv://test123:q8qWhZvNO5RNJkaZ@cluster0-gvlfa.mongodb.net/test?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://test123:<PasswordHere>@cluster0-gvlfa.mongodb.net/test?retryWrites=true&w=majority");
 mongoose.connection.once('open', ()=>{
     console.log("connected to mongodb");
 });
